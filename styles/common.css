@@ -1,0 +1,34 @@
+/* .header */
+.header{width: 100%; height: 50px; background: #d07283; position: fixed; top:0; left:0;}
+.header h1{width:100%; font-size: 15px; text-align: center; color: #fff; margin: 0;}
+
+
+/* .gnb */
+.gnb-wrap{width:100%; max-width: 650px; position: absolute;z-index: 9999; left: -100%;}
+.gnb{width: 250px; height: 100vh; background: #fff; box-shadow: unset; position: absolute; top: 0; left: 0;}
+
+.gnb-wrap.active{left: 0;}
+.gnb-wrap.active .gnb{left: 0; box-shadow: 5px 0 5px rgba(78, 78, 78, 0.3);}
+
+    .gnb-wrap .gnb-bg{width: 100%; height: 100vh;}
+    .gnb-wrap .gnb .title-wrap{width: 100%; height: 150px; background: #ffb8c4;}
+    .gnb-wrap .gnb .title-wrap h2{font-size: 18px;}
+
+    .gnb-wrap .gnb .ui.vertical.menu{margin: 0 auto; margin-top: 30px;}
+
+
+
+/* .index */
+.index{width: 100%; padding-top: 60px;}
+.index h2{font-size: 16px; text-align: center; margin: 10px 0  20px;}
+
+.index form .ui.button{display:block; margin: 0 auto; background: #d07283; color: #fff; align-self: center; margin-top: 50px;}
+
+/* .chart */
+.chart{width: 100%; padding-top: 60px;}
+.chart .chart-list,
+.chart .chart-list ul,
+.chart .chart-list ul li{width: 100%;}
+    .chart ul li .btn-wrap{text-align: right;}
+
+    .recharts-wrapper{margin: 0 auto; margin-top: 20px;}
