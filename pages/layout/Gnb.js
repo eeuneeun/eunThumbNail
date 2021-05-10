@@ -23,7 +23,7 @@ export default function Gnb(props) {
     <div className={`gnb-wrap ${isOpenGnb ? "active" : ""}`}>
       <div className="gnb-bg" onClick={()=>setIsOpenGnb(false)}></div>
       <div className="gnb">
-        <div className="title-wrap  flex-center ">
+        <div className="title-wrap">
           <h2>은은님 안녕하세요!</h2>
         </div>
 

@@ -1,47 +1,70 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from "recharts";
 import { Button } from "semantic-ui-react";
+//npm install recharts
+
+var _ = require('lodash');
 
 const max=3000;
 const min=1000;
 let xNum=0;
+let tmpData = [];
 let intervalForSecond = null;
 
-
-export default function ReChart() {
+function ReChart() {
     
-    const [data, setData] = useState([]);
-
+  const [data, setData] = useState([]);
+  const [isInterval, setIsInterval] = useState(0);
+  // const savedData = useRef(data);
+    
     function auto(){
-        intervalForSecond = setInterval(function(){
-            day()
-            console.log(data)
-        }, 3000);
+      setIsInterval(isInterval+1);
     };
 
     function stop(){
-        clearInterval(intervalForSecond)
-        console.log("정지")
-
+      setIsInterval(0);
     };
 
 
     function day(){
-        xNum = xNum+1
+        xNum = xNum+1;
+        tmpData.push({
+          name: xNum,
+          line01: Math.floor(Math.random() * (max - min)) + min,
+          line02: Math.floor(Math.random() * (max - min)) + min,
+          amt: Math.floor(Math.random() * (max - min)) + min
+        });
         setData([
-            ...data,
-            {
-                name: xNum,
-                line01: Math.floor(Math.random() * (max - min)) + min,
-                line02: Math.floor(Math.random() * (max - min)) + min,
-                amt: Math.floor(Math.random() * (max - min)) + min
-            }
+          ...data,
+          {
+            name: xNum,
+            line01: Math.floor(Math.random() * (max - min)) + min,
+            line02: Math.floor(Math.random() * (max - min)) + min,
+            amt: Math.floor(Math.random() * (max - min)) + min
+          }
         ]);
-        console.log(xNum);
     }
 
+    // Set up the interval.
+    useEffect(() => {
+      if (isInterval > 0) {
+        console.log("asdasd")
+        intervalForSecond = setTimeout(()=>{
+          day()
+        }, 1000);
+        setIsInterval(isInterval+1);
+        
+      }else{
 
+        clearInterval(intervalForSecond);
 
+      }
+    }, [isInterval]);
+
+    useEffect(() => {
+      console.log("ㅇㅈㅇㅍㅌ", data)
+      console.log(isInterval)
+    }, [data])
 
   return (
     <>
@@ -80,3 +103,7 @@ export default function ReChart() {
     </>
   );
 }
+
+
+
+export default ReChart;

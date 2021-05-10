@@ -1,5 +1,8 @@
 import { Button, Checkbox, Form } from "semantic-ui-react";
 import ReChart from "./ReChart";
+import VictoryLineChart from "./VictoryLineChart";
+import VisChart from "./VisChart";
+
 
 export default function Index() {
   return (
@@ -11,9 +14,13 @@ export default function Index() {
             <li>
               <ReChart />
             </li>
-            <li>2</li>
-            <li>3</li>
-            <li>4</li>
+            <li>
+              <VictoryLineChart />
+            </li>
+            <li>
+              <VisChart />
+            </li>
+            <li></li>
           </ul>
         </div>
       </div>
