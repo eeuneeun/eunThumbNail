@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from "recharts";
 import { Button } from "semantic-ui-react";
 //npm install recharts
@@ -8,32 +8,24 @@ var _ = require('lodash');
 const max=3000;
 const min=1000;
 let xNum=0;
-let tmpData = [];
-let intervalForSecond = null;
+let intervalObj = null;
 
 function ReChart() {
     
   const [data, setData] = useState([]);
-  const [isInterval, setIsInterval] = useState(0);
-  // const savedData = useRef(data);
+  const [isRepeat, setIsRepeat] = useState(0);
     
     function auto(){
-      setIsInterval(isInterval+1);
+      setIsRepeat(isRepeat+1);
     };
 
     function stop(){
-      setIsInterval(0);
+      setIsRepeat(0);
     };
 
 
     function day(){
         xNum = xNum+1;
-        tmpData.push({
-          name: xNum,
-          line01: Math.floor(Math.random() * (max - min)) + min,
-          line02: Math.floor(Math.random() * (max - min)) + min,
-          amt: Math.floor(Math.random() * (max - min)) + min
-        });
         setData([
           ...data,
           {
@@ -47,24 +39,16 @@ function ReChart() {
 
     // Set up the interval.
     useEffect(() => {
-      if (isInterval > 0) {
-        console.log("asdasd")
-        intervalForSecond = setTimeout(()=>{
-          day()
-        }, 1000);
-        setIsInterval(isInterval+1);
-        
+      if (isRepeat > 0) {
+        intervalObj = setTimeout(()=>{
+          day();
+          setIsRepeat(isRepeat+1);
+        }, 3000);
       }else{
-
-        clearInterval(intervalForSecond);
-
+        clearInterval(intervalObj);
       }
-    }, [isInterval]);
+    }, [isRepeat]);
 
-    useEffect(() => {
-      console.log("ㅇㅈㅇㅍㅌ", data)
-      console.log(isInterval)
-    }, [data])
 
   return (
     <>

@@ -1,4 +1,4 @@
-import { Button, Checkbox, Form } from "semantic-ui-react";
+import React from "react";
 import ReChart from "./ReChart";
 import VictoryLineChart from "./VictoryLineChart";
 import VisChart from "./VisChart";
